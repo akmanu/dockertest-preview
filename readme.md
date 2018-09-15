@@ -95,6 +95,17 @@ dockertest:
 
 ```
 
+Your Makefile might have some special requirement that I might not include,
+so you could need to tune the Makefile for you build, but the idea is still
+the same.
+
+The **Docker** image is going to launch the Makefile with the **dockertest**
+switch. You can also test your build locally by just running
+
+`make dockertest`
+
+If it works in your environment, and you added all the dependencies to the
+Makefile, it *"should"* work for the Docker Image.
 
 ### The Dockerfile
 
@@ -122,19 +133,24 @@ CMD /startscript.sh
 ```
 
 *If you are new to Docker, and want to build your own Image the command to build the Docker 
-Image, just cut and paste the code above, and run the command below.
+Image, just cut and paste the code above, and run the command below.*
 
 `docker build -t dockertest .`
 
+Obviously, your more than welcome to use my images, but if you have some base
+images that you use, then use your own.
+
 ##### The Special Sauce
 
-The special sauce is I pass an Enviornment variable into the Docker command line interface,
+The special sauce is passing an Enviornment variable into the Docker command line interface,
 which provides the URL where the Docker Image is going to pull down the *Github* repository.
 
 ![Hello World](images/specialsauce.png)
 
+For this example, I needed to allow *Port 3000* to be able to access the guest
+Docker Image, so I added that as well.
 
 
-
+![Hello World](images/port.png)
 
 
