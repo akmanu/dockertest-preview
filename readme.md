@@ -24,6 +24,11 @@ You should see a web page displaying Hello World, like below:
 For the purposes of this example, I am using the **Node**. Node is a very simple, below I will
 have some other examples that use a two step build process.
 
+Below is a simple diagram of how this works:
+
+![Hello World](images/flow.png)
+
+
 #### It works like this:
 
 1. **Launch Docker Image**   Launches Docker with an Environment variable to a **Github** repository
@@ -144,6 +149,8 @@ images that you use, then use your own.
 
 The special sauce is passing an Enviornment variable into the Docker command line interface,
 which provides the URL where the Docker Image is going to pull down the *Github* repository.
+I chose to call the Environment Variable **github**, but if you build your
+own Dockerfile, you can call it anything you like.
 
 ![Hello World](images/specialsauce.png)
 
