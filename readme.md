@@ -1,4 +1,4 @@
-## Testing your Github Repo(s) with Docker
+## Easily test your Github Repositories with Docker
 
 How many times have you checked your code into Github, just to have someone else check it out, just to find out there was some dependency missing, and they could not get it to run.
 
@@ -160,4 +160,14 @@ Docker Image, so I added that as well.
 
 ![Hello World](images/port.png)
 
+### Final thoughts
+
+One thing I really like about this approach, it makes is **Very** easy for
+someone to try your code. Below is a screenshot frmo one of my Github
+Repositories where I include the command to try my code directly from
+the description in the readme.md file.
+
+![Hello World](images/screenshot.png)
+
+I enjoyed documenting this technique, I hope others find it useful
 
