@@ -2,9 +2,9 @@
 
 How many times have you checked your code into Github, just to have someone else check it out, just to find out there was some dependency missing, and they could not get it to run.
 
-I rely heavily on Docker for my build environment, and before I release anything to a team mate, I like to run it through a quick test in Docker to make sure everything is working properly.
+I rely heavily on Docker for my build environment, and before I release anything to a teammate, I like to run it through a quick test in Docker to make sure everything is working properly.
 
-This approach is simple, and only relies on Docker, git and a very simple make file. This approach could easily be integrated into an automated build system to achieve Continuous Integration
+This approach is simple, and only relies on Docker, git and a very simple makefile. This approach could easily be integrated into an automated build system to achieve Continuous Integration
 
 ## Try it out !
 
@@ -154,7 +154,7 @@ own Dockerfile, you can call it anything you like.
 
 ![Hello World](images/specialsauce.png)
 
-For this example, I needed to allow *Port 3000* to be able to access the guest
+For this example, I also needed to allow *Port 3000* to be able to access the guest
 Docker Image, so I added that as well.
 
 
