@@ -152,13 +152,13 @@ which provides the URL where the Docker Image is going to pull down the *Github*
 I chose to call the Environment Variable **github**, but if you build your
 own Dockerfile, you can call it anything you like.
 
-![Hello World](images/specialsauce.png)
+![Special Sauce](images/specialsauce.png)
 
 For this example, I also needed to allow *Port 3000* to be able to access the guest
 Docker Image, so I added that as well.
 
 
-![Hello World](images/port.png)
+![ports](images/port.png)
 
 ### Final thoughts
 
@@ -167,7 +167,7 @@ someone to try your code. Below is a screenshot frmo one of my Github
 Repositories where I include the command to try my code directly from
 the description in the readme.md file.
 
-![Hello World](images/screenshot.png)
+![ports](images/screenshot.png)
 
 I enjoyed documenting this technique, I hope others find it useful
 
