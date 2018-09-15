@@ -6,7 +6,7 @@ I rely heavily on Docker for my build environment, and before I release anything
 
 This approach is simple, and only relies on Docker, git and a very simple make file. This approach could easily be integrated into an automated build system to achieve Continuous Integration
 
-## Try it out
+## Try it out !
 
 Below is a running example of this, it is a simple Node Helloworld Web Server running on port
 3000. Just run this command:
@@ -21,11 +21,10 @@ You should see a web page displaying Hello World, like below:
 
 ## How does it work
 
-For the purposes of this example, I am using the **GO Language**. Go is a little more complex, and
-this example uses **go-bindata-assetfs** which per-compiles static HTML content before the final
-build. So it is a 2 step build process, just to add a little more complexity.
+For the purposes of this example, I am using the **Node**. Node is a very simple, below I will
+have some other examples that use a two step build process.
 
-##### The steps work like this
+#### It works like this:
 
 1. **Launch Docker Image**   Launches Docker with an Environment variable to a **Github** repository
 2. **pull**   Clones the **github** repository into the docker image
@@ -45,6 +44,25 @@ This is an example of the Makefile I use, the Makefile is very simple, you can c
 it your own way, but this is basically what I use. Ideally, the Makefile should pull down
 any required packages (the Github will be pulled from the Docker Image automatically), then
 it should perform the build, and launch the application. 
+
+**Below is an example I used for a Node Language example**
+
+``` 
+#Sample from https://github.com/pmcdowell-okta/Simple-node-webserver
+setup:
+	npm install http
+
+build:
+	echo "nothing to build, this Node, but thank you for thinking of me"
+
+run:
+	node index.js
+
+dockertest:
+	make setup
+	make build
+	make run
+```
 
 **Below is an example I used for a Go Language example**
 
@@ -76,24 +94,7 @@ dockertest:
     make run
 
 ```
-**Below is an example I used for a Node Language example**
 
-
-``` 
-setup:
-	npm install http
-
-build:
-	echo "nothing to build, this Node, but thank you for thinking of me"
-
-run:
-	node index.js
-
-dockertest:
-	make setup
-	make build
-	make run
-```
 
 ### The Dockerfile
 
@@ -124,6 +125,14 @@ CMD /startscript.sh
 Image, just cut and paste the code above, and run the command below.
 
 `docker build -t dockertest .`
+
+##### The Special Sauce
+
+The special sauce is I pass an Enviornment variable into the Docker command line interface,
+which provides the URL where the Docker Image is going to pull down the *Github* repository.
+
+![Hello World](images/specialsauce.png)
+
 
 
 
