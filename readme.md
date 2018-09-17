@@ -4,7 +4,7 @@ How many times have you checked your code into Github, just to have someone else
 
 I rely heavily on Docker for my build environment, and before I release anything to a teammate, I like to run it through a quick test in Docker to make sure everything is working properly.
 
-This approach is simple, and only relies on Docker, git and a very simple makefile. This approach could easily be integrated into an automated build system to achieve Continuous Integration
+This approach is simple and only relies on Docker, git and a very simple makefile. This approach could easily be integrated into an automated build system to achieve Continuous Integration
 
 ## Try it out !
 
@@ -22,7 +22,7 @@ You should see a web page displaying Hello World, like below:
 ## How does it work
 
 For the purposes of this example, I am using the **Node**. Node is a very simple, below I will
-have some other examples that use a two step build process.
+have some other examples that use a two-step build process.
 
 Below is a simple diagram of how this works:
 
@@ -55,18 +55,18 @@ it should perform the build, and launch the application.
 ``` 
 #Sample from https://github.com/pmcdowell-okta/Simple-node-webserver
 setup:
-	npm install http
+    npm install http
 
 build:
-	echo "nothing to build, this Node, but thank you for thinking of me"
+    echo "nothing to build, this Node, but thank you for thinking of me"
 
 run:
-	node index.js
+    node index.js
 
 dockertest:
-	make setup
-	make build
-	make run
+    make setup
+    make build
+    make run
 ```
 
 **Below is an example I used for a Go Language example**
@@ -79,17 +79,17 @@ SHELL := /bin/bash
 PATH := bin:$(PATH)
 
 setup:
-	@GOPATH=$(GOPATH) go get "github.com/gorilla/mux"
-	@GOPATH=$(GOPATH) go get "github.com/elazarl/go-bindata-assetfs"
-	@GOPATH=$(GOPATH) go get github.com/jteeuwen/go-bindata/...
-	@GOPATH=$(GOPATH) go get github.com/elazarl/go-bindata-assetfs/...
-	
+    @GOPATH=$(GOPATH) go get "github.com/gorilla/mux"
+    @GOPATH=$(GOPATH) go get "github.com/elazarl/go-bindata-assetfs"
+    @GOPATH=$(GOPATH) go get github.com/jteeuwen/go-bindata/...
+    @GOPATH=$(GOPATH) go get github.com/elazarl/go-bindata-assetfs/...
+    
 build: 
-	@GOPATH=$(GOPATH) go build ./...
-	@GOPATH=$(GOPATH) go install ./...
+    @GOPATH=$(GOPATH) go build ./...
+    @GOPATH=$(GOPATH) go install ./...
 
 run: 
-	bin/main
+    bin/main
 
 
 #This runs setup, build, and launches the application
@@ -101,7 +101,7 @@ dockertest:
 ```
 
 Your Makefile might have some special requirement that I might not include,
-so you could need to tune the Makefile for you build, but the idea is still
+so you could need to tune the Makefile for your build, but the idea is still
 the same.
 
 The **Docker** image is going to launch the Makefile with the **dockertest**
@@ -114,7 +114,7 @@ Makefile, it *"should"* work for the Docker Image.
 
 ### The Dockerfile
 
-For the **Dockerfile** I try to keep this as lean as possible. I typically start with a base **Ubuntu** image. I add the required language(s) such as **GO**, **Node.js** or what ever language I am using.
+For the **Dockerfile** I try to keep this as lean as possible. I typically start with a base **Ubuntu** image. I add the required language(s) such as **GO**, **Node.js** or whatever language I am using.
 
 The special sauce is a few commands that I put in the **Dockerfile** which launches the **Makefile**
 from the **Github** repository. This is what one of my Dockerfiles looks like:
@@ -122,7 +122,7 @@ from the **Github** repository. This is what one of my Dockerfiles looks like:
 ##### Dockerfile
 
 ```
-FROM oktaadmin/awscli 
+FROM oktaadmin/ubuntu 
 #You can start with any base Docker Image that works for you
 
 RUN echo "#!/bin/bash\n" > /startscript.sh
@@ -147,7 +147,7 @@ images that you use, then use your own.
 
 ##### The Special Sauce
 
-The special sauce is passing an Enviornment variable into the Docker command line interface,
+The special sauce is passing an Environment variable into the Docker command line interface,
 which provides the URL where the Docker Image is going to pull down the *Github* repository.
 I chose to call the Environment Variable **github**, but if you build your
 own Dockerfile, you can call it anything you like.
@@ -163,7 +163,7 @@ Docker Image, so I added that as well.
 ### Final thoughts
 
 One thing I really like about this approach, it makes is **Very** easy for
-someone to try your code. Below is a screenshot frmo one of my Github
+someone to try your code. Below is a screenshot from one of my Github
 Repositories where I include the command to try my code directly from
 the description in the readme.md file.
 
